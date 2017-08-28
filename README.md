@@ -29,7 +29,7 @@ inoltre permette la creazione dei seguenti dato ad alto livello:
 - creazione di un percorso Ground Truth
 - distanza in linea d'aria (metri) tra coordinate GPS consecutive
 
-Alla fine della raccolta dati il dataset creato puo' essere inviati via mail all'indirizzo specificato
+Alla fine della raccolta dati il dataset creato puo' essere inviato via mail all'indirizzo specificato
 
 # Utilizzo
 
