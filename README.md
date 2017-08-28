@@ -4,18 +4,17 @@ Android app per la creazione di un Dataset in ambito di localizzazione usando i 
 
 La seguente app è stata creata nell'ambito di un progetto universitario presso l'Università degli studi di Verona.
 
-#ToDo
+## ToDo
 
 - Test su versioni android più recenti
 - Passare a material design
 - Creare APK
 
-#Specifiche
-!! aggiungi versioni android supportate su cui è stato testato.
+## Specifiche
 
 App testata su android sdk 15 l'app puo' essere utilizzata su qualsiasi dispositivo android con versione sdk 15 o superiore
 
-# Descrizione
+## Descrizione
 
 La seguente app permette la creazione di un dataset basato sui seguenti sensori:
 
