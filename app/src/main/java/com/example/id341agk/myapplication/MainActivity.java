@@ -26,6 +26,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.StringTokenizer;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity implements LocationListener, SensorEventListener{
 
@@ -36,13 +37,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
     private Button inizio,fine;
     private TextView t,lblInizio,lblFine,lblDistanza,stato,prova, accelerazione, giroscopio, magnetometro, percorso;
 
-    private String report="LatitIniziale | LongitIniziale | LatitFinale | LongitFinale | Distanza | Tempo   | Percorso\n";
+    private String report="LatitIniziale | LongitIniziale | LatitFinale | LongitFinale | DatiAccelerometro | " +
+            "DatiMagnetomero | DatiGiroscopio | Distanza | Tempo   | Percorso\n";
     private Integer nProva=0;
 
     private double latitude, longitude;
     private double latInizio, lonInizio, latFine, lonFine, distanza, ax, ay, az, gx, gy, gz,magX, magY, magZ;
     public static DecimalFormat DECIMAL_FORMATTER;
     private String tempo;
+    private List<Double>  DatiAccel = new ArrayList<Double>();
+    private List<Double>  DatiMag = new ArrayList<Double>();
+    private List<Double>  DatiGir = new ArrayList<Double>();
 
     //Definire il percorso da fare per la prova
     //private String[] way = {"1.0","2.0", "3.0", "4.0", "5.0", "Fine"};
@@ -132,9 +137,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
                 stato.setText("Ricomincia...");
                 lblDistanza.setText("Distanza: " + dist + " m");
 
-                report = report + latInizio + "| " + lonInizio + "| " + latFine + "| " + lonFine + "| "
-                        + ax +"| "+ ay +"| "+ az +"| " + gx +"| "+ gy +"| "+ gz +"| "+ magX +"| "+ magY +"| "+ magZ
-                        +"| "+ dist + "| " + tempo +" | "+ way[nProva]+"\r\n";
+                report = report + tempo+ " ; "+ latInizio + "; " + lonInizio + "; " + latFine + "; " + lonFine + "; "
+                        +DatiAccel+"; "+DatiMag+"; "+DatiGir +"; "+ dist + "; " + way[nProva]+ "\r\n\r\n";
                 //report = report + latInizio + "| " + lonInizio + "| " + latFine + "| " + lonFine + "| "
                         //+ dist + "| " + tempo +  way[nProva] +"\r\n";
                 nProva = nProva + 1;
@@ -204,6 +208,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
             ax = event.values[0];
             ay = event.values[1];
             az = event.values[2];
+            DatiAccel.add(ax);
+            DatiAccel.add(ay);
+            DatiAccel.add(az);
+
             String Ax = String.format("%.2f", ax);
             String Ay = String.format("%.2f", ay);
             String Az = String.format("%.2f", az);
@@ -214,6 +222,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
             gx = event.values[0];
             gy = event.values[1];
             gz = event.values[2];
+            DatiGir.add(gx);
+            DatiGir.add(gy);
+            DatiGir.add(gz);
+
             String Gx = String.format("%.2f", gx);
             String Gy = String.format("%.2f", gy);
             String Gz = String.format("%.2f", gz);
@@ -225,6 +237,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
             magX = event.values[0];
             magY = event.values[1];
             magZ = event.values[2];
+            DatiMag.add(magX);
+            DatiMag.add(magY);
+            DatiMag.add(magZ);
+
             String Mx = String.format("%.2f", magX);
             String My = String.format("%.2f", magY);
             String Mz = String.format("%.2f", magZ);
